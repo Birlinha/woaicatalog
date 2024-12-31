@@ -1,0 +1,9 @@
+-- criar resource group
+-- criar serviço API Management
+	pricing-plan: consumption
+-- criar azure cosmos db account for noSQL
+
+-- criar storage account
+	primary service: blob storage or lake storage gen 2
+	standard
+	+ allow making anonymous access on individual containers
