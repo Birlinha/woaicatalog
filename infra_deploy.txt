@@ -7,3 +7,8 @@
 	primary service: blob storage or lake storage gen 2
 	standard
 	+ allow making anonymous access on individual containers
+
+-- criar containeres imagem/video
+
+-- criar algumas azure functions
+	

@@ -34,3 +34,14 @@ az storage account create \
     --kind StorageV2 \
     --enable-hierarchical-namespace true \
     --allow-blob-public-access true
+
+# Passo 5: Criar containeres de imagem e video para armazenamento de arquivos
+az storage container create \
+    --name video \
+    --account-name $STORAGE_ACCOUNT_NAME \
+    --public-access blob
+
+az storage container create \
+    --name image \
+    --account-name $STORAGE_ACCOUNT_NAME \
+    --public-access blob
