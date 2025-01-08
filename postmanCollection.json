@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "628a2ba7-c43e-4245-ae9c-1a1615a09e6c",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16226632"
+	},
+	"item": [
+		{
+			"name": "SaveFileToStorage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "file-type",
+						"value": "image",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/SaveFileToStorage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"SaveFileToStorage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveMovie",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"<autofilled>\",\r\n    \"title\":\"Life is Strange Movie\",\r\n    \"year\":\"2014\",\r\n    \"video\":\"https://woaicat0storage.blob.core.windows.net/video/LiS.mp4\",\r\n    \"thumb\":\"https://woaicat0storage.blob.core.windows.net/image/LiS.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7197/api/saveMovie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7197",
+					"path": [
+						"api",
+						"saveMovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movieDetail",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7151/api/movieDetail?id=6d4a1ef4-1b6d-406a-a31f-b536841a6c0e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7151",
+					"path": [
+						"api",
+						"movieDetail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6d4a1ef4-1b6d-406a-a31f-b536841a6c0e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allMovies",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}

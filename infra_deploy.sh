@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Variaveis
-RESOURCE_GROUP="NomeDoResourceGroup"
+RESOURCE_GROUP="INDIE_RSG"
 LOCATION="brazilsouth"
-API_MGMT_SERVICE_NAME="NomeDoAPIMgmtService"
-COSMOS_DB_ACCOUNT_NAME="NomeDoCosmosDBAccount"
-STORAGE_ACCOUNT_NAME="NomeDostorageaccount"
+API_MGMT_SERVICE_NAME="INDIE-APIMGMT"
+COSMOS_DB_ACCOUNT_NAME="indie-cosmodb"
+STORAGE_ACCOUNT_NAME="indie0storage"
 
 # Passo 1: Criar um Resource Group
 az group create --name $RESOURCE_GROUP --location $LOCATION
@@ -15,7 +15,8 @@ az apim create \
     --name $API_MGMT_SERVICE_NAME \
     --resource-group $RESOURCE_GROUP \
     --location $LOCATION \
-    --sku-name Consumption
+    --sku-name Consumption \
+    --publisher-email youremail@address.com --publisher-name yourname
 
 # Passo 3: Criar um Azure Cosmos DB Account for NoSQL
 az cosmosdb create \

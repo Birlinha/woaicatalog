@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .movie {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .movie:hover {
+            transform: scale(1.05);
+        }
+        .thumb {
+            position: relative;
+            overflow: hidden;
+            height: 600px;
+        }
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumb video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .thumb:hover video {
+            display: block;
+        }
+        .details {
+            padding: 15px;
+        }
+        .details h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
+        .details p {
+            margin: 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="movies-container">
+        <!-- Movies will be dynamically loaded here -->
+    </div>
+
+    <script>
+        async function fetchMovies() {
+            try {
+                const response = await fetch('http://localhost:7155/api/getAllMovies');
+                const movies = await response.json();
+                const container = document.getElementById('movies-container');
+                
+                movies.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.className = 'movie';
+
+                    movieElement.innerHTML = `
+                        <div class="thumb">
+                            <img src="${movie.thumb}" alt="${movie.title}">
+                            <video src="${movie.video}" muted></video>
+                        </div>
+                        <div class="details">
+                            <h3>${movie.title}</h3>
+                            <p>${movie.year}</p>
+                        </div>
+                    `;
+
+                    const video = movieElement.querySelector('video');
+                    movieElement.querySelector('.thumb').addEventListener('mouseenter', () => {
+                        video.currentTime = 0;
+                        video.play();
+                    });
+                    movieElement.querySelector('.thumb').addEventListener('mouseleave', () => {
+                        video.pause();
+                    });
+
+                    container.appendChild(movieElement);
+                });
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        }
+
+        // Load movies on page load
+        document.addEventListener('DOMContentLoaded', fetchMovies);
+    </script>
+</body>
+</html>
