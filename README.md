@@ -32,10 +32,11 @@ Coleção do Postman que documenta e permite a reprodução das requisições ut
 Script que automatiza o provisionamento da arquitetura, configurando os serviços necessários no Azure.
 
 ## Como Executar
-1. Configure sua conta do Azure e certifique-se de que os recursos necessários estão disponíveis.
-2. Execute o script `infra_deploy.sh` para inicializar a infraestrutura.
-3. Utilize a coleção do Postman (`postmanCollection.json`) para testar as funções.
-4. Acesse a página `movies_preview.html` para visualizar o resultado final do projeto.
+
+É necessário que a infraestrutura já esteja configurada no Portal Azure, e as devidas conexões de local.settings.json (não providenciadas no repositório) devem ser providenciadas de acordo com o recurso necessário.
+Os módulos que utilizam Storage Account precisam da autenticação desse, e o do cosmosDB de sua própria conexão de autenticação.
+
+Depois de providenciar a arquitetura e configurações, pode ser executado localmente com a instalação do Azure Func Core, e da inicialização de cada módulo individualmente.
 
 ## Tecnologias Utilizadas
 - Azure Storage
